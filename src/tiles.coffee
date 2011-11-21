@@ -1,4 +1,4 @@
-class Images
+class Tiles
   constructor: () ->
     @grass = new Image();
     @grass.src = "images/tileGrass.gif"
@@ -7,4 +7,4 @@ class Images
     @grass
 
 root = exports ? this
-root.Images = Images
+root.Tiles = Tiles

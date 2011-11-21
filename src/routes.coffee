@@ -4,7 +4,7 @@ class Routes
   constructor: (url) ->
     @encoding = 'utf8'
     @serveJQuery() if url == '/jquery.js'
-    @serveImagesJS() if url == '/images.js'
+    @serveTiles() if url == '/tiles.js'
     @serveEngine() if url == '/game_engine.js'
     @serveIndex() if url == '/'
     @serveGif() if @endsWith(url, 'gif')
@@ -30,8 +30,8 @@ class Routes
     @response = @getFile('./src/jquery.js')
     @header = "text/javascript"
 
-  serveImagesJS: () ->
-    @response = @getFile('./src/images.js')
+  serveTiles: () ->
+    @response = @getFile('./src/tiles.js')
     @header = "text/javascript"
 
   serveGif: () ->
