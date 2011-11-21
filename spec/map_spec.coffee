@@ -1,5 +1,6 @@
 Map = require('../src/map').Map
 Position = require('../src/position').Position
+Tiles = require('../src/tiles').Tiles
 
 describe("Map", ->
   beforeEach(->
@@ -13,8 +14,12 @@ describe("Map", ->
     expect(@map.getBottomRightBound()).toEqual(new Position(20, 20))
   )
 
-  it("contains grass in every tile", ->
-    expect(@map.getTilesAtPosition(new Position(0, 0))).toEqual(new GrassTile)
-
+  it("contains grass in the first position", ->
+    expect(@map.getTilesAtPosition(new Position(0, 0))).toEqual((new Tiles).getGrass())
   )
+
+  it("contains water in the second position", ->
+    expect(@map.getTilesAtPosition(new Position(1, 0))).toEqual((new Tiles).getWater())
+  )
+
 )

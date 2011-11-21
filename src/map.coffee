@@ -1,4 +1,5 @@
 Position = require('../src/position').Position
+Tiles = require('../src/tiles').Tiles
 
 class Map
   constructor: () ->
@@ -16,7 +17,7 @@ class Map
     new Position(20, 20)
 
   getTilesAtPosition: (position) ->
-    new GrassTile
+    (new Tiles).getGrass()
 
 root = exports ? this
 root.Map = Map
