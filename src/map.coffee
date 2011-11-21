@@ -3,10 +3,10 @@ Tiles = require('../src/tiles').Tiles
 
 class Map
   constructor: () ->
-    @map
-    for (num in 0..20)
-      for (innerNum in 0..20)
-        @map[num][innerNum] = (new Tiles).getGrass()
+    @map = {}
+    @map[new Position(num, innerNum)] = (new Tiles).getGrass() for innerNum in [0..20] for num in [0..20]
+    @map[new Position(1, 0)] = (new Tiles).getWater()
+
   getTopLeftBound: () ->
     new Position(0, 0)
 
