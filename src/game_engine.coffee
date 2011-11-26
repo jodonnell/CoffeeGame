@@ -1,10 +1,13 @@
 class GameEngine
   constructor: () ->
-    tiles = new window.Tiles
-    tiles.getGrass().onload = () ->
+    map = new Map
+    (new Tiles).getGrass().onload = () ->
       canvas = $('#game_surface')[0]
       context = canvas.getContext('2d')
-      context.drawImage(tiles.getGrass(), 0, 0)
+
+      for num in [0..20]
+        for innerNum in [0..11]
+          context.drawImage(map.getTilesAtPosition(new Position(num, innerNum)), num * 60, innerNum * 60)
 
 root = exports ? this
 root.GameEngine = GameEngine

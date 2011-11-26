@@ -3,11 +3,10 @@ fs = require "fs"
 class Routes
   constructor: (url) ->
     @encoding = 'utf8'
-    @serveJQuery() if url == '/jquery.js'
-    @serveTiles() if url == '/tiles.js'
-    @serveEngine() if url == '/game_engine.js'
+    @serveJS(url) if @endsWith(url, 'js')
     @serveIndex() if url == '/'
     @serveGif() if @endsWith(url, 'gif')
+    @serveJpg() if @endsWith(url, 'jpg')
 
   getResponse: () ->
     @response
@@ -18,26 +17,23 @@ class Routes
   getEncoding: () ->
     @encoding
 
+  serveJS: (url) ->
+    @response = @getFile("./src/#{url}")
+    @header = "text/javascript"
+
   serveIndex: () ->
     @response = @getFile('./src/index.html')
     @header = "text/html"
-
-  serveEngine: () ->
-    @response = @getFile('./src/game_engine.js')
-    @header = "text/javascript"
-
-  serveJQuery: () ->
-    @response = @getFile('./src/jquery.js')
-    @header = "text/javascript"
-
-  serveTiles: () ->
-    @response = @getFile('./src/tiles.js')
-    @header = "text/javascript"
 
   serveGif: () ->
     @encoding = 'binary'
     @response = @getFile('./images/tileGrass.gif')
     @header = "image/gif"
+
+  serveJpg: () ->
+    @encoding = 'binary'
+    @response = @getFile('./images/tileWater.jpg')
+    @header = "image/jpg"
 
   getFile: (file) ->
     fs.readFileSync(file).toString(@encoding)
