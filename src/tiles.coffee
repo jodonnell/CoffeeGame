@@ -1,5 +1,4 @@
 class Tiles
-
   constructor: () ->
     @water = @image()
     @water.src = "images/tileWater.jpg"
