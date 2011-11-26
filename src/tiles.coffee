@@ -1,5 +1,5 @@
-if not Image?
-   class Image
+if not window.Image?
+  class window.Image
     constructor: () ->
       @src = ''
 
