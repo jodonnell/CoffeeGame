@@ -1,0 +1,7 @@
+Dependencies
+ node
+ npm
+ npm install coffee-script
+ npm install jasmine-node
+ npm install zombie
+
