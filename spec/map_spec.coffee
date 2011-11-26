@@ -1,4 +1,5 @@
 Map = require('../src/map').Map
+
 Position = require('../src/position').Position
 Tiles = require('../src/tiles').Tiles
 
@@ -10,8 +11,8 @@ describe("Map", ->
   it("has boundaries", ->
     expect(@map.getTopLeftBound()).toEqual(new Position(0, 0))
     expect(@map.getTopRightBound()).toEqual(new Position(20, 0))
-    expect(@map.getBottomLeftBound()).toEqual(new Position(0, 20))
-    expect(@map.getBottomRightBound()).toEqual(new Position(20, 20))
+    expect(@map.getBottomLeftBound()).toEqual(new Position(0, 11))
+    expect(@map.getBottomRightBound()).toEqual(new Position(20, 11))
   )
 
   it("contains grass in the first position", ->
