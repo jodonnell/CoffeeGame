@@ -3,6 +3,7 @@ fs = require "fs"
 class Routes
   constructor: (url) ->
     @encoding = 'utf8'
+    url = @scrubUrl(url)
     @serveJS(url) if @endsWith(url, 'js')
     @serveIndex() if url == '/'
     @serveGif() if @endsWith(url, 'gif')
@@ -41,6 +42,8 @@ class Routes
   endsWith: (str, suffix) ->
     str.indexOf(suffix, str.length - suffix.length) != -1;
 
+  scrubUrl: (url) ->
+    url.replace(/\.\./, '')
 
 root = exports ? this
 root.Routes = Routes
