@@ -10,7 +10,6 @@ class Map
     @map[new root.Position(num, innerNum).getHashKey()] = (new root.Tiles).getGrass() for innerNum in [0..11] for num in [0..20]
     @map[new root.Position(1, 0).getHashKey()] = (new root.Tiles).getWater()
 
-
   getTopLeftBound: () ->
     new root.Position(0, 0)
 
