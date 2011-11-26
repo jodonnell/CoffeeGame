@@ -1,13 +1,9 @@
-if not window.Image?
-  class window.Image
-    constructor: () ->
-      @src = ''
-
 class Tiles
+
   constructor: () ->
-    @water = new Image();
+    @water = @image()
     @water.src = "images/tileWater.jpg"
-    @grass = new Image();
+    @grass = @image()
     @grass.src = "images/tileGrass.gif"
 
   getGrass: () ->
@@ -15,6 +11,12 @@ class Tiles
 
   getWater: () ->
     @water
+
+  image: () ->
+    if window?
+      new Image()
+    else
+      {}
 
 root = exports ? this
 root.Tiles = Tiles
