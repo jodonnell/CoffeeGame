@@ -7,6 +7,7 @@ class Routes
     @serveJS(url) if @endsWith(url, 'js')
     @serveIndex() if url == '/'
     @serveJpg(url) if @endsWith(url, 'jpg')
+    @servePng(url) if @endsWith(url, 'png')
 
   getResponse: () ->
     @response
@@ -29,6 +30,11 @@ class Routes
     @encoding = 'binary'
     @response = @getFile("./#{url}")
     @header = "image/jpg"
+
+  servePng: (url) ->
+    @encoding = 'binary'
+    @response = @getFile("./#{url}")
+    @header = "image/png"
 
   getFile: (file) ->
     fs.readFileSync(file).toString(@encoding)

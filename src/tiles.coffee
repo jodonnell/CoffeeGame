@@ -6,11 +6,17 @@ class Tiles
     @water = @image()
     @water.src = @imagePath("images/tileWater.jpg")
 
+    @hero = @image()
+    @hero.src = @imagePath("images/hero.png")
+
   getGrass: () ->
     @grass
 
   getWater: () ->
     @water
+
+  getHero: () ->
+    @hero
 
   imagePath: (path) ->
     return path if window?

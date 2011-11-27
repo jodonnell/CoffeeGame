@@ -24,5 +24,7 @@ class GameEngine
       for innerNum in [0..11]
         context.drawImage(map.getTilesAtPosition(new root.Position(num, innerNum)), num * 60, innerNum * 60)
 
+    context.drawImage((new root.Tiles).hero, 0, 0)
+
 
 root.GameEngine = GameEngine
