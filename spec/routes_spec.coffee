@@ -16,8 +16,8 @@ describe("Routes", ->
   )
 
   it("can serve images", ->
-    routes = new Routes '/images/tileGrass.gif'
-    expect(routes.getHeader()).toBe("image/gif")
+    routes = new Routes '/images/tileGrass.jpg'
+    expect(routes.getHeader()).toBe("image/jpg")
     expect(routes.getEncoding()).toBe("binary")
   )
 

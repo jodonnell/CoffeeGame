@@ -11,7 +11,7 @@ if exports?
 class GameEngine
   constructor: () ->
     map = new root.Map()
-#    (new Tiles).getGrass().onload = () ->
+    # create onloads
 
     if window?
       @canvas = $('#game_surface')[0]
