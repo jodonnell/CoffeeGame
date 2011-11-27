@@ -24,9 +24,5 @@ class GameEngine
       for innerNum in [0..11]
         context.drawImage(map.getTilesAtPosition(new root.Position(num, innerNum)), num * 60, innerNum * 60)
 
-    #buffer = @canvas.toBuffer()
-    #fs.writeFileSync('/Users/jacobodonnell/programming/coffee/cookie2.jpg', buffer)
-
-
 
 root.GameEngine = GameEngine
