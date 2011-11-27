@@ -3,5 +3,6 @@ Dependencies
  npm
  npm install coffee-script
  npm install jasmine-node
- npm install zombie
+ brew install cairo
+ npm install -g canvas
 

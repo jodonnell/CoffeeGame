@@ -6,8 +6,7 @@ class Routes
     url = @scrubUrl(url)
     @serveJS(url) if @endsWith(url, 'js')
     @serveIndex() if url == '/'
-    @serveGif() if @endsWith(url, 'gif')
-    @serveJpg() if @endsWith(url, 'jpg')
+    @serveJpg(url) if @endsWith(url, 'jpg')
 
   getResponse: () ->
     @response
@@ -26,14 +25,9 @@ class Routes
     @response = @getFile('./src/index.html')
     @header = "text/html"
 
-  serveGif: () ->
+  serveJpg: (url) ->
     @encoding = 'binary'
-    @response = @getFile('./images/tileGrass.gif')
-    @header = "image/gif"
-
-  serveJpg: () ->
-    @encoding = 'binary'
-    @response = @getFile('./images/tileWater.jpg')
+    @response = @getFile("./#{url}")
     @header = "image/jpg"
 
   getFile: (file) ->
