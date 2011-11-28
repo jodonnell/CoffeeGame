@@ -1,10 +1,10 @@
 root = exports ? this
 
 if exports?
-  Canvas = require('canvas')
   root.Map = require('../src/map').Map
   root.Tiles = require('../src/tiles').Tiles
   root.Position = require('../src/position').Position
+  root.PointToPosition = require('../src/point_to_position').PointToPosition
   fs = require('fs')
 
 
@@ -25,6 +25,9 @@ class GameEngine
         context.drawImage(map.getTilesAtPosition(new root.Position(num, innerNum)), num * 60, innerNum * 60)
 
     context.drawImage((new root.Tiles).hero, 0, 0)
+
+  clickOnPosition: (x, y) ->
+    (new root.PointToPosition).convert(x, y)
 
 
 root.GameEngine = GameEngine

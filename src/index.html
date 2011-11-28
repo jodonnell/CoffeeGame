@@ -5,13 +5,20 @@
     <script src="tiles.js" type="text/javascript" charset="utf-8"></script>
     <script src="position.js" type="text/javascript" charset="utf-8"></script>
     <script src="map.js" type="text/javascript" charset="utf-8"></script>
+    <script src="point_to_position.js" type="text/javascript" charset="utf-8"></script>
     <script src="game_engine.js" type="text/javascript" charset="utf-8"></script>
     <title>Game</title>
   </head>
   <body>
     <canvas id="game_surface" width="1260" height="660"></canvas>
     <script type="text/javascript">
-      new window.GameEngine()
+      var game_engine = new window.GameEngine();
+      $('#game_surface').on('click' function (e) {
+        var x = e.pageX - this.offsetLeft;
+        var y = e.pageY - this.offsetTop;
+        game_engine.click(x, y);
+      });
+
     </script>
   </body>
 </html>
