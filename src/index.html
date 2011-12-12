@@ -13,11 +13,36 @@
     <canvas id="game_surface" width="1260" height="660"></canvas>
     <script type="text/javascript">
       var game_engine = new window.GameEngine();
-      $('#game_surface').on('click' function (e) {
+      $('#game_surface').on('click', function (e) {
         var x = e.pageX - this.offsetLeft;
         var y = e.pageY - this.offsetTop;
         game_engine.click(x, y);
       });
+
+(function() {
+  var onEachFrame;
+  if (window.webkitRequestAnimationFrame) {
+    onEachFrame = function(cb) {
+      var _cb = function() { cb(); webkitRequestAnimationFrame(_cb); }
+      _cb();
+    };
+  } else if (window.mozRequestAnimationFrame) {
+    onEachFrame = function(cb) {
+      var _cb = function() { cb(); mozRequestAnimationFrame(_cb); }
+      _cb();
+    };
+  } else {
+    onEachFrame = function(cb) {
+      setInterval(cb, 1000 / 60);
+    }
+  }
+  
+  window.onEachFrame = onEachFrame;
+})();
+
+window.onEachFrame(function() {game_engine.drawScreen()});
+
+
 
     </script>
   </body>
