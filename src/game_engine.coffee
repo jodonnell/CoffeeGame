@@ -5,6 +5,7 @@ if exports?
   root.Tiles = require('../src/tiles').Tiles
   root.Position = require('../src/position').Position
   root.PointToPosition = require('../src/point_to_position').PointToPosition
+  root.Hero = require('../src/hero').Hero
   fs = require('fs')
 
 
@@ -12,6 +13,7 @@ class GameEngine
   constructor: () ->
     @map = new root.Map()
     @moveToRects = () ->
+    @hero = new root.Hero()
     # create onloads
 
     if window?
@@ -27,7 +29,7 @@ class GameEngine
       for innerNum in [0..11]
         @context.drawImage(@map.getTilesAtPosition(new root.Position(num, innerNum)), num * 60, innerNum * 60)
 
-    @context.drawImage((new root.Tiles).hero, 0, 0)
+    @context.drawImage((new root.Tiles).hero, @hero.position.getScreenX(), @hero.position.getScreenY())
 
     @addEffects()
 
@@ -36,7 +38,7 @@ class GameEngine
 
   click: (x, y) ->
     position = (new root.PointToPosition).convert(x, y)
-    if position.getHashKey() == (new root.Position(0, 0)).getHashKey()
+    if position.getHashKey() == @hero.position.getHashKey()
       @moveToRects = () ->
         @context.fillStyle = "rgba(0, 0, 160, 0.5)"
         @context.fillRect(0,60,60,60)
