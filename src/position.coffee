@@ -7,12 +7,6 @@ class Position
   getY: () ->
     @y
 
-  getScreenX: () ->
-    @x * 60
-
-  getScreenY: () ->
-    @y * 60
-
   getHashKey: () ->
     "#{@x}#{@y}"
 
